@@ -1,19 +1,28 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { shoesReduxActions } from '../store/shoes/actions';
+import { message  } from 'antd';
+
 
 const ProductItem = (props) => {
     const dispatch = useDispatch();
     const { product } = props;
+    const [messageApi, contextHolder] = message.useMessage();
     const handleDetail = () => {
         dispatch(shoesReduxActions.handleDetailProduct(product));
         dispatch(shoesReduxActions.handleDetailModalOpen(true));
     }
     const handleCartAdd = () => {
         dispatch(shoesReduxActions.handleCartAdd({ product, quantity: 1 }));
+        messageApi.open({
+            type: 'success',
+            content: `${product.name} is added to you cart`,
+            duration: 2,
+        });
     }
     return (
         <div className='group/card bg-white border rounded-lg shadow-lg shadow-gray-300 border-gray-400 transition-colors duration-300 hover:cursor-pointer hover:border-blue-500'>
+            {contextHolder}
             <div className='relative overflow-hidden rounded-t-lg transition-colors duration-500 bg-gray-200 group-hover/card:bg-gray-400'>
                 <img className='w-full rounded-t-lg' src={product.image} alt="" />
                 <ul className='absolute top-4 right-4 space-y-3 transition-transform duration-500 delay-100 translate-x-[calc(200%)] opacity-0 group-hover/card:translate-x-0 group-hover/card:opacity-100'>

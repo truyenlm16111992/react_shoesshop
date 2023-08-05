@@ -1,4 +1,4 @@
-import { LISTVIEWOPTION_UPDATE, ISDETAILMODALOPEN_UPDATE, DETAILPRODUCT_VIEW, ISCARTMODALOPEN_SHOW, CARTADD_HANDLE, CARTDELETE_HANDLE, CARTQUANTITY_HANDLE, CARTQUANTITY_UPDATE } from "./actionType";
+import { LISTVIEWOPTION_UPDATE, ISDETAILMODALOPEN_UPDATE, DETAILPRODUCT_VIEW, ISCARTMODALOPEN_SHOW, CARTADD_HANDLE, CARTDELETE_HANDLE, CARTQUANTITY_HANDLE, CARTQUANTITY_UPDATE, CARTEMPTY_HANDLE } from "./actionType";
 
 const initialState = {
     listViewOption: {
@@ -46,6 +46,8 @@ export const shoesReducer = (state = initialState, action) => {
             const indexItem = myCart.findIndex(e => e.id === id);
             myCart[indexItem].cartQuantity = quantity || 1;
             return { ...state, myCart: [...myCart] };
+        case CARTEMPTY_HANDLE:
+            return { ...state, myCart: [] };
         default:
             return state;
     }

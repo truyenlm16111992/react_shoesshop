@@ -1,4 +1,4 @@
-import { LISTVIEWOPTION_UPDATE, ISDETAILMODALOPEN_UPDATE, DETAILPRODUCT_VIEW, ISCARTMODALOPEN_SHOW, CARTADD_HANDLE, CARTDELETE_HANDLE, CARTQUANTITY_HANDLE, CARTQUANTITY_UPDATE } from "./actionType";
+import { LISTVIEWOPTION_UPDATE, ISDETAILMODALOPEN_UPDATE, DETAILPRODUCT_VIEW, ISCARTMODALOPEN_SHOW, CARTADD_HANDLE, CARTDELETE_HANDLE, CARTQUANTITY_HANDLE, CARTQUANTITY_UPDATE, CARTEMPTY_HANDLE } from "./actionType";
 
 export const shoesReduxActions = {
     handleListViewOption: (payload) => {
@@ -49,4 +49,11 @@ export const shoesReduxActions = {
             payload
         }
     },
+    handleEmptyCart: (payload) => {
+        return {
+            type: CARTEMPTY_HANDLE,
+            payload
+        }
+    },
+    
 };
